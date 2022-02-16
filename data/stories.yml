@@ -24,8 +24,7 @@ stories:
   - action: utter_ask_taste
   - action: wine_form
   - active_loop: wine_form
-  - intent: inform
-  - action: utter_final_choice_001
+  - action: utter_final_choice
   - intent: learn_more
   - action: utter_question_for_more_details
   - intent: affirm

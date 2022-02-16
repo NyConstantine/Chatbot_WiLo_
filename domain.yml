@@ -19,9 +19,6 @@ entities:
 - color
 - flavor
 slots:
-  confirm_suggestion:
-    type: any
-    influence_conversation: false
   color:
     type: any
     influence_conversation: false
@@ -36,6 +33,23 @@ responses:
   - text: I am excited because i discover a very interesting wine! It's Moscato D'asti!You should try it. It's white sparkling wine. Are you satisfied with this choice or do you want to try another according to your taste?  
   utter_final_choice_001: 
   - text: Moscato D'asti is a very good choice, fits great with mascarpone with strawberry. Would you like anything else? #yes or no
+  utter_final_choice:
+    - condition:
+        - type: slot
+          name: color
+          value: White
+        - type: slot
+          name: flavor
+          value: sweet
+      text: Moscato D'asti, insert more for more
+    - condition:
+        - type: slot
+          name: color
+          value: White
+        - type: slot
+          name: flavor
+          value: dry
+      text: Moscofiliro Butari, insert more for more
   utter_question_for_more_details:
   - text: Would you like me to advise you on accompaniments and give you more details about the wine?
   utter_more_details_001:
@@ -46,12 +60,9 @@ responses:
   - text: I am a bot and I'm an expert in the world of Wines. My name is WiLo.
   utter_ask_taste:
   - text: Give me the color and flavor please ?
- # utter_ask_flavor:
- # - text: flavor ?
   utter_slots_values:
   - text: |-
       Here's your wine log:
-       - Accepting expert's suggetion?: {confirm_suggestion}
        - Color: {color}
        - Flavor: {flavor}
 
@@ -63,13 +74,6 @@ actions:
 forms:
   wine_form:
     required_slots:
-      confirm_suggestion:
-      - type: from_intent
-        intent: affirm
-        value: true
-      - type: from_intent
-        intent: deny
-        value: false
       color:
       - type: from_entity
         entity: color  

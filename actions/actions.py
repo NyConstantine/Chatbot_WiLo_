@@ -14,9 +14,9 @@ airtable_api_key=os.getenv("AIRTABLE_API_KEY")
 base_id=os.getenv("BASE_ID")
 table_name=os.getenv("TABLE_NAME")
 
-def create_wine_log(confirm_suggestion, color, flavor, ):
-    header = ['confirm_suggestion', 'color', 'flavor']
-    data = [confirm_suggestion, color, flavor]
+def create_wine_log( color, flavor, ):
+    header = [ 'color', 'flavor']
+    data = [ color, flavor]
 
     with open('user_response.csv', 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
@@ -31,14 +31,7 @@ class ValidateWineForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_wine_form"
 
-    async def validate_confirm_suggestion(
-        self,
-        value: Text,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> Dict[Text, Any]:
-            return {"confirm_suggestion": False}
+
   
 
 class ActionSubmitResults(Action):
@@ -52,13 +45,12 @@ class ActionSubmitResults(Action):
     ) -> List[Dict]:
 
       
-       confirm_suggestion = tracker.get_slot("confirm_suggestion")
+
        color = tracker.get_slot("color")
        flavor = tracker.get_slot("flavor")
        
 
        response = create_wine_log(
-               confirm_suggestion=confirm_suggestion,
                 color=color,
                 flavor=flavor
             )
