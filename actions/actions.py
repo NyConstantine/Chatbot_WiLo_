@@ -14,9 +14,9 @@ airtable_api_key=os.getenv("AIRTABLE_API_KEY")
 base_id=os.getenv("BASE_ID")
 table_name=os.getenv("TABLE_NAME")
 
-def create_health_log(confirm_exercise, exercise, sleep, diet, stress, goal):
-    header = ['confirm_exercise', 'exercise', 'sleep', 'diet', 'stress', 'goal']
-    data = [confirm_exercise, exercise, sleep, diet, stress, goal]
+def create_wine_log(confirm_suggestion, color, flavor, ):
+    header = ['confirm_suggestion', 'color', 'flavor']
+    data = [confirm_suggestion, color, flavor]
 
     with open('user_response.csv', 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
@@ -27,21 +27,19 @@ def create_health_log(confirm_exercise, exercise, sleep, diet, stress, goal):
         # write the data
         writer.writerow(data)
 
-class ValidateHealthForm(FormValidationAction):
+class ValidateWineForm(FormValidationAction):
     def name(self) -> Text:
-        return "validate_health_form"
+        return "validate_wine_form"
 
-    async def validate_confirm_exercise(
+    async def validate_confirm_suggestion(
         self,
         value: Text,
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> Dict[Text, Any]:
-        if value:
-            return {"confirm_exercise": True}
-        else:
-            return {"exercise": "None", "confirm_exercise": False }
+            return {"confirm_suggestion": False}
+  
 
 class ActionSubmitResults(Action):
     def name(self) -> Text:
@@ -53,22 +51,17 @@ class ActionSubmitResults(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict]:
 
-        confirm_exercise = tracker.get_slot("confirm_exercise")
-        exercise = tracker.get_slot("exercise")
-        sleep = tracker.get_slot("sleep")
-        stress = tracker.get_slot("stress")
-        diet = tracker.get_slot("diet")
-        goal = tracker.get_slot("goal")
+      
+       confirm_suggestion = tracker.get_slot("confirm_suggestion")
+       color = tracker.get_slot("color")
+       flavor = tracker.get_slot("flavor")
+       
 
-        response = create_health_log(
-                confirm_exercise=confirm_exercise,
-                exercise=exercise,
-                sleep=sleep,
-                stress=stress,
-                diet=diet,
-                goal=goal
+       response = create_wine_log(
+               confirm_suggestion=confirm_suggestion,
+                color=color,
+                flavor=flavor
             )
 
-        dispatcher.utter_message("Thanks, your answers have been recorded!")
-        return []
-
+       dispatcher.utter_message("Thanks, your answers have been recorded!")
+       return []

@@ -11,104 +11,68 @@ intents:
 - inform
 - thankyou
 - out_of_scope
-- ask_lower_stress
-- ask_eat_healthy
-- ask_exercise
+- learn_more
 entities:
 - exercise
 - sleep
 - stress
+- color
+- flavor
 slots:
-  confirm_exercise:
+  confirm_suggestion:
     type: any
     influence_conversation: false
-  exercise:
+  color:
     type: any
     influence_conversation: false
-  sleep:
+  flavor:
     type: any
     influence_conversation: false
-  diet:
-    type: any
-    influence_conversation: false
-  stress:
-    type: any
-    influence_conversation: false
-  goal:
-    type: any
-    influence_conversation: false
+
 responses:
   utter_greet:
-  - text: Hi! It's time for your daily wellness check. Tracking healthy habits is a great way to measure your progress over time. Would you like to answer a few questions about your health?
+  - text: Hi! I am WiLo, Wine Lover! How is your day?
+  utter_expert_suggest:
+  - text: I am excited because i discover a very interesting wine! It's Moscato D'asti!You should try it. It's white sparkling wine. Are you satisfied with this choice or do you want to try another according to your taste?  
+  utter_final_choice_001: 
+  - text: Moscato D'asti is a very good choice, fits great with mascarpone with strawberry. Would you like anything else? #yes or no
+  utter_question_for_more_details:
+  - text: Would you like me to advise you on accompaniments and give you more details about the wine?
+  utter_more_details_001:
+  - text: Contains 5% Alcohol. Light sweets with vivid aroma, airy, with gentle foaming and refreshing acidity that leads to a fresh and refreshing finish. It fits great with light mousse, mascarpone with strawberry, even a very light milk chocolate mousse, panna cotta with honey and rose water. A style of wine that Greeks have loved in one of its most premium versions. With the highest distinction in the famous Italian driver Gamberro Rosso, the Moscato d' Asti Tenuta del Fant will captivate you with the crystal clear aromatic character of Muscat and the fantastic balance it has in the mouth. Just seductive...
   utter_goodbye:
-  - text: See you tomorrow. Bye!
+  - text: It was my pleasure meeting you. I am here if you want to explore the marvelous world of wine. See you again soon!
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
-  utter_ask_confirm_exercise:
-  - text: Did you exercise yesterday? Don't sweat it if you didn't run a marathon - walks count!
-  utter_ask_exercise:
-  - text: What kind of exercise did you do 💪 ?
-  utter_ask_sleep:
-  - text: How much sleep did you get 💤  last night?
-  utter_ask_diet:
-  - text: Did you stick to a healthy diet 🥦  yesterday?
-  utter_ask_stress:
-  - text: Is your stress level low, medium, or high 🧘 ?
-  utter_ask_goal:
-  - text: Setting goals - even small ones - is a great way to focus your day. What do you want to accomplish today 🥇 ?
+  - text: I am a bot and I'm an expert in the world of Wines. My name is WiLo.
+  utter_ask_taste:
+  - text: Give me the color and flavor please ?
+ # utter_ask_flavor:
+ # - text: flavor ?
   utter_slots_values:
   - text: |-
-      Here's your daily wellness log:
-       - Exercised?: {confirm_exercise}
-       - Type of exercise: {exercise}
-       - Sleep: {sleep}
-       - Stuck to a healthy diet?: {diet}
-       - Stress level: {stress}
-       - Goal: {goal}
-  utter_no_worries:
-  - text: No problem :)
+      Here's your wine log:
+       - Accepting expert's suggetion?: {confirm_suggestion}
+       - Color: {color}
+       - Flavor: {flavor}
+
   utter_ask_continue:
   - text: Sorry, I don't quite understand. Do you want to continue?
-  utter_stress_info:
-  - text: It's ok to feel overwhelmed at times. Try to set realistic expectations and exercise time management techniques, like dividing large tasks into more manageable pieces. Relaxation techniques, like deep breathing and meditation, can also be beneficial.
-  utter_exercise_info:
-  - text: Most healthy adults should aim to get about 150 min of moderate exercise per week. This includes activities like a brisk walk or yard work.
-  utter_diet_info:
-  - text: A healthy diet includes fruits and vegetables, whole grains, dairy, lean protein, and plant-based fats. While there is room in a healthy diet for treats, added sugar should be eaten sparingly. Aim for a variety of foods, and balance.
 actions:
 - action_submit_results
-- validate_health_form
+- validate_wine_form
 forms:
-  health_form:
+  wine_form:
     required_slots:
-      confirm_exercise:
+      confirm_suggestion:
       - type: from_intent
         intent: affirm
         value: true
       - type: from_intent
         intent: deny
         value: false
-      - type: from_intent
-        intent: inform
-        value: true
-      exercise:
+      color:
       - type: from_entity
-        entity: exercise
-      sleep:
+        entity: color  
+      flavor:
       - type: from_entity
-        entity: sleep
-      - type: from_intent
-        intent: deny
-        value: None
-      stress:
-      - type: from_entity
-        entity: stress
-      diet:
-      - type: from_text
-        intent:
-        - inform
-        - affirm
-        - deny
-      goal:
-      - type: from_text
-        intent: inform
+        entity: flavor  
