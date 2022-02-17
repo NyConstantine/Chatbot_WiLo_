@@ -111,7 +111,7 @@ responses:
   utter_iamabot:
   - text: I am a bot and I'm an expert in the world of Wines. My name is WiLo.
   utter_ask_taste:
-  - text: Could you provide me with relative information about your taste buds? The type of wine (Red, White, Rose) and the sweetness level (sweet, semisweet, dry).
+  - text: Could you provide me with relative information about your taste buds? The type of wine (Red, White, Rose) and the sweetness level (sweet, semisweet, dry). [Current available answers - Red and dry / White and dry / White and sweet / Rose and semisweet].
   utter_slots_values:
   - text: |-
       Here's your wine log:
