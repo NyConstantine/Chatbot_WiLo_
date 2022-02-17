@@ -78,6 +78,8 @@ nlu:
     - [rose](color) [semisweet](flavor) wine
     - [white](color) [dry](flavor) wine
     - [red](color) [sweet](flavor) wine
+    - [red](color) wine
+    - [dry](flavor) wine
 - intent: out_of_scope
   examples: |
     - that's not what I want to do
