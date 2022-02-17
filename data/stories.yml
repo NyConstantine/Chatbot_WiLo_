@@ -36,7 +36,7 @@ stories:
   - action: utter_greet
   - intent: negative
   - action: utter_joke
-  - intent: affirm #positive intent
+  - intent: affirm 
   - action: utter_expert_suggest
   - intent: deny
   - action: utter_ask_taste
@@ -54,7 +54,7 @@ stories:
   - action: utter_greet
   - intent: negative
   - action: utter_joke
-  - intent: affirm #positive intent
+  - intent: affirm 
   - action: utter_expert_suggest
   - intent: affirm
   - action: utter_expert_choice

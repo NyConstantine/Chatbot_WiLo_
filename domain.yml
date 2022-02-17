@@ -16,9 +16,6 @@ intents:
 - out_of_scope
 - learn_more
 entities:
-- exercise
-- sleep
-- stress
 - color
 - flavor
 slots:
