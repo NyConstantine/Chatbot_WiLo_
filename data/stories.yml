@@ -7,12 +7,12 @@ stories:
   - action: utter_greet
   - intent: positive
   - action: utter_expert_suggest
-#  - intent: affirm
-#  - action: utter_expert_choice
-#  - intent: learn_more
-#  - action: utter_expert_choice_more
-#  - intent: thankyou
-#  - action: utter_goodbye
+  - intent: affirm
+  - action: utter_expert_choice
+  - intent: learn_more
+  - action: utter_expert_choice_more
+  - intent: thankyou
+  - action: utter_goodbye
 
 - story: survey happy path_2
   steps:
@@ -22,8 +22,9 @@ stories:
   - action: utter_expert_suggest
   - intent: deny
   - action: utter_ask_taste
-  - action: wine_form
-  - active_loop: wine_form
+  - intent: inform
+#  - action: wine_form
+#  - active_loop: wine_form
   - action: utter_final_choice
   - intent: learn_more
   - action: utter_final_choice_more
@@ -40,8 +41,9 @@ stories:
   - action: utter_expert_suggest
   - intent: deny
   - action: utter_ask_taste
-  - action: wine_form
-  - active_loop: wine_form
+  - intent: inform
+#  - action: wine_form
+#  - active_loop: wine_form
   - action: utter_final_choice
   - intent: learn_more
   - action: utter_final_choice_more
@@ -61,7 +63,7 @@ stories:
   - intent: learn_more
   - action: utter_expert_choice_more
   - intent: thankyou
-  - action: utter_goodbye
+  - action: utter_goodbye  
 
 - story: survey sad path_3 # Staying in bad mood
   steps:
@@ -71,8 +73,9 @@ stories:
   - action: utter_joke
   - intent: deny
   - action: utter_ask_taste
-  - action: wine_form
-  - active_loop: wine_form
+  - intent: inform
+#  - action: wine_form
+#  - active_loop: wine_form
   - action: utter_final_choice
   - intent: learn_more
   - action: utter_final_choice_more
@@ -85,46 +88,40 @@ stories:
   - action: utter_greet
   - intent: indifferent
   - action: utter_ask_taste
-  - action: wine_form
-  - active_loop: wine_form
+  - intent: inform
+#  - action: wine_form
+#  - active_loop: wine_form
   - action: utter_final_choice
   - intent: learn_more
   - action: utter_final_choice_more
   - intent: thankyou
-  - action: utter_goodbye
+  - action: utter_goodbye  
 
-- story: survey wine form stop
+- story: out of scope continue
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: positive
-  - action: utter_expert_suggest
-  - intent: deny
-  - action: utter_ask_taste
-  - action: wine_form
-  - active_loop: wine_form
-  - intent: out_of_scope
-  - action: utter_ask_continue
-  - intent: deny
-  - action: action_deactivate_loop
-  - active_loop: null
-  - action: utter_goodbye
-
-- story: survey wine form continue
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: positive
-  - action: utter_expert_suggest
-  - intent: deny
-  - action: utter_ask_taste
-  - action: wine_form
-  - active_loop: wine_form
   - intent: out_of_scope
   - action: utter_ask_continue
   - intent: affirm
   - action: utter_ask_taste
-  - action: wine_form
+  - intent: inform
+  - action: utter_final_choice
+  - intent: learn_more
+  - action: utter_final_choice_more
+  - intent: thankyou
+  - action: utter_goodbye  
+
+- story: out of scope no continue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: affirm
+  - action: utter_ask_taste
+  - intent: out_of_scope
+  - action: utter_ask_continue
+  - intent: deny
+  - action: utter_goodbye   
 
 - story: no interaction
   steps:

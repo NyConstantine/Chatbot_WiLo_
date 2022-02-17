@@ -20,11 +20,19 @@ entities:
 - flavor
 slots:
   color:
-    type: any
-    influence_conversation: false
+    type: categorical
+    values: 
+      - Red
+      - Rose
+      - White
+    influence_conversation: true
   flavor:
-    type: any
-    influence_conversation: false
+    type: categorical
+    values: 
+      - sweet
+      - semisweet
+      - dry
+    influence_conversation: true
 
 responses:
   utter_greet:
@@ -120,16 +128,16 @@ responses:
       type "more" to get your results!
 
   utter_ask_continue:
-  - text: Sorry, I don't quite understand. Do you want to continue?
-actions:
-- action_submit_results
-- validate_wine_form
-forms:
-  wine_form:
-    required_slots:
-      color:
-      - type: from_entity
-        entity: color  
-      flavor:
-      - type: from_entity
-        entity: flavor  
+  - text: Sorry, I don't quite understand. I am an expert only at the joyful world of Wine. Would you like me to guide you through it so you'll enjoy it as well?
+#actions:
+#- action_submit_results
+#- validate_wine_form
+#forms:
+#  wine_form:
+#    required_slots:
+#      color:
+#      - type: from_entity
+#        entity: color  
+#      flavor:
+#      - type: from_entity
+#        entity: flavor  
