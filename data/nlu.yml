@@ -15,7 +15,7 @@ nlu:
     - goodbye
     - see you around
     - see you later
-- intent: affirm #positive_mood
+- intent: affirm 
   examples: |
     - yes
     - of course
@@ -25,14 +25,17 @@ nlu:
     - why not
     - ok great
     - yeah, great
-    - Bet
-    - Exciting
-    - Good
-    - Great
-    - Fabulus
-    - Marvelous
-    - Beautiful
-- intent: deny #negative_mood
+- intent: positive
+  examples: |
+    - exciting
+    - good
+    - great
+    - fabulus
+    - marvelous
+    - beautiful
+    - hilarious
+    - funny
+- intent: deny 
   examples: |
     - no
     - I don't think so
@@ -42,6 +45,22 @@ nlu:
     - absolutely not
     - could have been better
     - another
+- intent: negative
+  examples: |
+    - bad
+    - couldn't be worse
+    - disasterous
+    - stressfull
+    - awfull
+    - distasteful
+    - off day
+    - difficult day
+- intent: indifferent
+  examples: |
+    - neither
+    - hurry
+    - do not want to discuss
+    - no talk
 - intent: thankyou
   examples: |
     - okay great thanks
@@ -59,7 +78,6 @@ nlu:
     - [rose](color) [semisweet](flavor) wine
     - [white](color) [dry](flavor) wine
     - [red](color) [sweet](flavor) wine
-    - details
 - intent: out_of_scope
   examples: |
     - that's not what I want to do
@@ -85,7 +103,6 @@ nlu:
     - tell me more, please
     - tell
     - more
-    - i hear you
     - yes, please
     - i want to know accompaniments
     - more details about wine

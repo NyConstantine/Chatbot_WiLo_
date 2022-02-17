@@ -9,6 +9,9 @@ intents:
 - deny
 - bot_challenge
 - inform
+- positive
+- negative
+- indifferent
 - thankyou
 - out_of_scope
 - learn_more
@@ -31,8 +34,10 @@ responses:
   - text: Hi! I am WiLo, Wine Lover! How is your day?
   utter_expert_suggest:
   - text: I am excited because i discover a very interesting wine! It's Moscato D'asti!You should try it. It's white sparkling wine. Are you satisfied with this choice or do you want to try another according to your taste?  
-  utter_final_choice_001: 
-  - text: Moscato D'asti is a very good choice, fits great with mascarpone with strawberry. Would you like anything else? #yes or no
+  utter_expert_choice:
+  - text: Moscato D'asti is a very good choice, fits great with mascarpone with strawberry. Would you like more information? #more
+  utter_expert_choice_more:
+  - text: Moscato D'asti contains 5% Alcohol. Light sweets with vivid aroma, airy, with gentle foaming and refreshing acidity that leads to a fresh and refreshing finish. It fits great with light mousse, mascarpone with strawberry, even a very light milk chocolate mousse, panna cotta with honey and rose water. A style of wine that Greeks have loved in one of its most premium versions. With the highest distinction in the famous Italian driver Gamberro Rosso, the Moscato d' Asti Tenuta del Fant will captivate you with the crystal clear aromatic character of Muscat and the fantastic balance it has in the mouth. Just seductive...
   utter_final_choice:
     - condition:
         - type: slot
@@ -41,7 +46,7 @@ responses:
         - type: slot
           name: flavor
           value: sweet
-      text: Moscato D'asti, insert more for more
+      text: Moscato D'asti is a very good choice, fits great with mascarpone with strawberry. Would you like more information? #more
     - condition:
         - type: slot
           name: color
@@ -49,22 +54,73 @@ responses:
         - type: slot
           name: flavor
           value: dry
-      text: Moscofiliro Butari, insert more for more
+      text: Moschofilero - Boutari looks like it'll hit the spot. It fits great with daily appetizers of Greek cuisine. Would you like more information? #more
+    - condition:
+        - type: slot
+          name: color
+          value: Rose
+        - type: slot
+          name: flavor
+          value: semisweet
+      text: Toupee [Syrah 70%, Merlot 30%] will not dissappoint you. It fits great with desserts. Would you like more information? #more
+    - condition:
+        - type: slot
+          name: color
+          value: Red
+        - type: slot
+          name: flavor
+          value: dry
+      text: Castellare - Chianti Classico is one of a kind. It fits great with grilled steaks. Would you like more information? #more
+  utter_final_choice_more:
+    - condition:
+        - type: slot
+          name: color
+          value: White
+        - type: slot
+          name: flavor
+          value: sweet
+      text:  Moscato D'asti contains 5% Alcohol. Light sweets with vivid aroma, airy, with gentle foaming and refreshing acidity that leads to a fresh and refreshing finish. It fits great with light mousse, mascarpone with strawberry, even a very light milk chocolate mousse, panna cotta with honey and rose water. A style of wine that Greeks have loved in one of its most premium versions. With the highest distinction in the famous Italian driver Gamberro Rosso, the Moscato d' Asti Tenuta del Fant will captivate you with the crystal clear aromatic character of Muscat and the fantastic balance it has in the mouth. Just seductive...
+    - condition:
+        - type: slot
+          name: color
+          value: White
+        - type: slot
+          name: flavor
+          value: dry
+      text: Moschofilero - Boutari contains 11% Alcohol. White-yellow with greenish-yellow hues and intense varietal aroma of flowers and citrus on the nose and mouth, dominated by white rose and orange blossoms. Fresh wine, full and balanced with a lasting aftertaste. Salads, appetizers, seafood dishes and fish, such as roasted gossip and pilaf mussels, meat dishes such as lamb, as well as fruit dishes. Soft cheeses with little fat, such as Katiki Domokos, oily dishes rich in herbs, steamed mussels, drunk plain as an aperitif, cheese platter. It is truly versatile, it fits with almost all flavors.
+    - condition:
+        - type: slot
+          name: color
+          value: Rose
+        - type: slot
+          name: flavor
+          value: semisweet
+      text: Toupee [Syrah 70%, Merlot 30%] contains 12.5% Alcohol. Its light pink color fascinates the eye, while on our nose it satisfies the delicate aroma of a rose. In the mouth we have a sweet taste of red fruit; but then the acidity will come to clean our palate and leave a nice aftertaste of red apple. Goes well with a wide range of desserts, such as sweet tarts with cream and fruit.
+    - condition:
+        - type: slot
+          name: color
+          value: Red
+        - type: slot
+          name: flavor
+          value: dry
+      text: Castellare - Chianti Classico contains 13.5% Alcohol.  Aromatic in the nose, full and complex in the mouth, is a wine that makes proud the most famous wine-producing region of Tuscany, Italy. It fits great with spaghetti with minced meat, braised beef, grilled steaks and cheese platter.
   utter_question_for_more_details:
   - text: Would you like me to advise you on accompaniments and give you more details about the wine?
-  utter_more_details_001:
-  - text: Contains 5% Alcohol. Light sweets with vivid aroma, airy, with gentle foaming and refreshing acidity that leads to a fresh and refreshing finish. It fits great with light mousse, mascarpone with strawberry, even a very light milk chocolate mousse, panna cotta with honey and rose water. A style of wine that Greeks have loved in one of its most premium versions. With the highest distinction in the famous Italian driver Gamberro Rosso, the Moscato d' Asti Tenuta del Fant will captivate you with the crystal clear aromatic character of Muscat and the fantastic balance it has in the mouth. Just seductive...
+  utter_joke:
+  - text: I can not even begin to fathom what you're going through. I'll tell you what's the secret to enjoying a good bottle of wine. Open the bottle to let it breathe. If it doesn't look like it's breathing, give it mouth-to-mouth. Did that make you feel better?
+  - text: I can not even begin to fathom what you're going through. The other day my friend told me the other day "I have an open-door policy. Show up with wine, and I'll open the door". Did that make you feel better?
   utter_goodbye:
   - text: It was my pleasure meeting you. I am here if you want to explore the marvelous world of wine. See you again soon!
   utter_iamabot:
   - text: I am a bot and I'm an expert in the world of Wines. My name is WiLo.
   utter_ask_taste:
-  - text: Give me the color and flavor please ?
+  - text: Could you provide me with relative information about your taste buds? The type of wine (Red, White, Rose) and the sweetness level (sweet, semisweet, dry).
   utter_slots_values:
   - text: |-
       Here's your wine log:
        - Color: {color}
        - Flavor: {flavor}
+      type "more" to get your results!
 
   utter_ask_continue:
   - text: Sorry, I don't quite understand. Do you want to continue?

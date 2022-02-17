@@ -30,8 +30,6 @@ def create_wine_log( color, flavor, ):
 class ValidateWineForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_wine_form"
-
-
   
 
 class ActionSubmitResults(Action):
@@ -55,5 +53,4 @@ class ActionSubmitResults(Action):
                 flavor=flavor
             )
 
-       dispatcher.utter_message("Thanks, your answers have been recorded!")
        return []
